@@ -247,3 +247,45 @@ function redirectToWaze(
   let wazeURL = `https://waze.com/ul?ll=${eventLatitude},${eventLongitude}&navigate=yes&zoom=17&coords=${userLatitude},${userLongitude}`;
   window.open(wazeURL, "_blank");
 }
+
+// Function to handle form submission
+function handleSubmit(event) {
+  event.preventDefault(); // Prevent the form from submitting normally
+
+  // Get the address input value
+  const addressInput = document.getElementById("address");
+  const address = addressInput.value;
+
+  // Check if the address input is not empty
+  if (!address.trim()) {
+    alert("Please enter an address.");
+    return;
+  }
+
+  // Use the geocoding service to get the coordinates
+  const geocodeURL = `https://geocode.maps.co/search?q=${encodeURIComponent(
+    address
+  )}`;
+
+  fetch(geocodeURL)
+    .then((response) => response.json())
+    .then((data) => {
+      // Extract coordinates from the first element of the response
+      const firstResult = data[0];
+      if (firstResult) {
+        const coordinates = firstResult.lat + ", " + firstResult.lon;
+        // Display the coordinates
+        alert(`Coordinates for "${address}": ${coordinates}`);
+      } else {
+        alert("No coordinates found for the provided address.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching coordinates:", error);
+      alert("Error fetching coordinates. Please try again.");
+    });
+}
+
+// Add an event listener to the form for form submission
+const addressForm = document.getElementById("addressForm");
+addressForm.addEventListener("submit", handleSubmit);

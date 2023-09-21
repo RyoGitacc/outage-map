@@ -3,11 +3,9 @@ body {
   padding: 0;
 }
 #map {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  z-index: 1;
+  width: 70vw;
+  height: 100vh;
+  /* z-index: 1; */
 }
 .button-container {
   position: absolute;
@@ -41,4 +39,53 @@ body {
 
 .map-button:hover {
   opacity: 0.9;
+}
+
+.container {
+  display: flex;
+}
+
+.form {
+  text-align: center;
+  margin: 100px;
+}
+
+.form h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.submit-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1eaaf1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #1a91d1;
 }
